@@ -1,7 +1,7 @@
 # Student Record Management API
 
 ## Description
-Build an API for managing student records, which could be used by a school.
+Build an API for managing student records.
 
 ## Entities
 - **Students**
