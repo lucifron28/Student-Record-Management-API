@@ -53,19 +53,19 @@ def get_students(name: Optional[str] = None, program: Optional[str] = None, stud
 @app.post("/students")
 def create_student(student: Student) -> Dict[str, Dict[str, str]]:
     new_id = max(students.keys()) + 1
-    students[new_id] = student.dict()
+    students[new_id] = student.model_dump()
     return {"id": new_id, "student": students[new_id]}
 
 @app.put("/students/{id}")
 def update_student(id: int, student: Student) -> Dict[str, Dict[str, str]]:
     existing_student = find_student_by_id(id)
-    students[id] = student.dict()
+    students[id] = student.model_dump()
     return {"student": students[id]}
 
 @app.patch("/students/{id}")
 def partial_update_student(id: int, student: Student) -> Dict[str, Dict[str, str]]:
     existing_student = find_student_by_id(id)
-    for key, value in student.dict(exclude_unset=True).items():
+    for key, value in student.model_dump(exclude_unset=True).items():
         existing_student[key] = value
     return {"student": existing_student}
 
