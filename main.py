@@ -61,3 +61,16 @@ def update_student(id: int, student: Student) -> Dict[str, Dict[str, str]]:
     existing_student = find_student_by_id(id)
     students[id] = student.model_dump()
     return {"student": students[id]}
+
+@app.patch("/students/{id}")
+def partial_update_student(id: int, student: Student) -> Dict[str, Dict[str, str]]:
+    existing_student = find_student_by_id(id)
+    for key, value in student.model_dump(exclude_unset=True).items():
+        existing_student[key] = value
+    return {"student": existing_student}
+
+@app.delete("/students/{id}")
+def delete_student(id: int) -> Dict[str, str]:
+    existing_student = find_student_by_id(id)
+    del students[id]
+    return {"message": "Student deleted successfully"}
