@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Dict, List, Optional, Union
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
@@ -11,6 +12,15 @@ students: Dict[int, Dict[str, str]] = {
     4: {"name": "Neo Martin Medrano", "student_number": "A22-33909", "program": "BSIT"},
     5: {"name": "Nikko Samson", "student_number": "A23-36823", "program": "BSIT"}
 }
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class Student(BaseModel):
     name: str
