@@ -6,11 +6,10 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 students: Dict[int, Dict[str, Union[int, str]]] = {
-    1: {"id": 1, "name": "Ron Vincent Cada", "student_number": "A23-35524", "program": "BSIT"},
-    2: {"id": 2, "name": "Peter Bob Domogma", "student_number": "A23-36794", "program": "BSIT"},
-    3: {"id": 3, "name": "Gabriel Ballesteros", "student_number": "A23-37009", "program": "BSIT"},
-    4: {"id": 4, "name": "Neo Martin Medrano", "student_number": "A22-33909", "program": "BSIT"},
-    5: {"id": 5, "name": "Nikko Samson", "student_number": "A23-36823", "program": "BSIT"}
+    1: {"id": 1, "name": "Junio Layba", "student_number": "T22-35397", "program": "BSIT"},
+    2: {"id": 2, "name": "Jose Nathaniel Rodriguez", "student_number": "T23-36998", "program": "BSIT"},
+    3: {"id": 3, "name": "Neo Martin Medrano", "student_number": "A22-33909", "program": "BSIT"},
+    4: {"id": 4, "name": "Mike Andrei Gomez", "student_number": "A23-36954", "program": "BSIT"}
 }
 
 app.add_middleware(
