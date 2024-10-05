@@ -60,7 +60,7 @@ def get_students(name: Optional[str] = None, program: Optional[str] = None, stud
 
 @app.post("/students")
 def create_student(student: Student) -> Dict[str, Union[int, Dict[str, Union[int, str]]]]:
-    new_id = max(students.keys()) + 1
+    new_id = max(students.keys(), default=0) + 1
     students[new_id] = {"id": new_id, **student.dict()}
     return {"id": new_id, "student": students[new_id]}
 
